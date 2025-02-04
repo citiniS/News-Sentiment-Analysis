@@ -1,5 +1,5 @@
 # News-Sentiment-Analysis
-## Project for CSI-280 by Kimberly Benson, Thomas Lukasiewicz, Coda Gooch-Breault, Yin Bo Chen
+## Project for CSI-280 by Kimberly Benson, Thomas Lukasiewicz, Griffin Gooch-Breault, Yin Bo Chen
 
 # What Is This Project?
 
