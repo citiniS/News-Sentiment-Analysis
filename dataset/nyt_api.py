@@ -22,7 +22,7 @@ import requests
 import csv
 
 # variables
-API_KEY = 'yuYr5EzTg0M9KB7TJ2g6xqUqyKizH80G' # api key
+API_KEY = 'KEY GOES HERE' # api key
 KEYWORDS = ['transgender', 'electon'] # keywords to get articles for
 CSV_FILENAME = 'dataset/nytarticles.csv' # file data is exported to
 PAGES_NEEDED = 2 # pages to scrape through. 1 page = 10 articles
