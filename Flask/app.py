@@ -3,9 +3,9 @@ import os
 from datetime import datetime
 import csv
 
-from flask import Flask
+from flask import Flask, render_template, Markup
 
-from flask import render_template
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -23,17 +23,21 @@ def contact():
 @app.route('/cnndata/')
 def cnndata():
     data = []
-    file_path = os.path.join('..','dataset', 'raw_news_titles', 'cnnarticles.csv')
-    with open(file_path, 'r') as file:
+    file_path = "dataset/raw_news_titles/cnnarticles.csv"
+
+    with open(file_path, 'r', encoding='utf-8') as file:
         csv_reader = csv.reader(file)
         for row in csv_reader:
-            data.append(row)
+            escaped_row = [Markup(cell) for cell in row]
+            data.append(escaped_row)
+    
     return render_template('cvsdisplay.html', data=data)
 
 @app.route('/nprdata/')
 def nprdata():
     npr_data = []
-    npr_path = os.path.join('..','dataset', 'raw_news_titles' , 'nprarticles.csv')
+    npr_path = "dataset/raw_news_titles/nprarticles.csv"
+
     with open(npr_path, 'r') as file:
         csv_reader = csv.reader(file)
         for row in csv_reader:
@@ -43,7 +47,8 @@ def nprdata():
 @app.route('/nytdata/')
 def nytdata():
     nyt_data = []
-    nyt_path = os.path.join('..', 'dataset', 'raw_news_titles' ,'nytarticles.csv')
+    nyt_path = "dataset/raw_news_titles/nytarticles.csv"
+
     with open(nyt_path, 'r') as file:
         csv_reader = csv.reader(file)
         for row in csv_reader:
@@ -63,3 +68,5 @@ def hello_there(name = None):
 def get_data():
     return app.send_static_file("data.json")
 
+if __name__ == "__main__":
+    app.run(debug=True)
